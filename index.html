@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Выпускной • Геймдизайн</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f0ff; /* очень светлый фиолетовый фон */
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1250px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.8rem;
+    }
+
+    /* заголовок — простой, без лишних теней */
+    .title {
+      font-size: clamp(3.2rem, 10vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #823ae0;
+      background: transparent;
+      -webkit-text-fill-color: #823ae0;
+      text-shadow: none;
+      filter: none;
+      animation: none;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    /* сетка — 3 колонки */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* карточка */
+    .card {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 1.5rem 1.5rem 1.8rem 1.5rem;
+      box-shadow: 0 8px 22px rgba(130, 58, 224, 0.12);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid #e9d9ff;
+      animation: fadeRise 0.6s ease-out backwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.16s; }
+    .card:nth-child(5) { animation-delay: 0.23s; }
+    .card:nth-child(6) { animation-delay: 0.3s; }
+
+    @keyframes fadeRise {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 30px rgba(130, 58, 224, 0.22);
+      border-color: #823ae0;
+    }
+
+    /* место под изображение */
+    .image-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #f3edff;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      border: 2px dashed #d4b5ff;
+      transition: all 0.25s ease;
+      background-color: #faf7ff;
+    }
+
+    .card:hover .image-placeholder {
+      border-color: #823ae0;
+      background-color: #f0e6ff;
+    }
+
+    .image-placeholder span {
+      font-size: 3.5rem;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+      background: transparent;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      display: block;
+    }
+
+    .card:hover .image-placeholder span {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    /* название проекта */
+    .project-name {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #823ae0;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+      word-break: break-word;
+      transition: color 0.2s;
+      line-height: 1.25;
+    }
+
+    .card:hover .project-name {
+      color: #6a24c9;
+    }
+
+    /* имя автора */
+    .author {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #5a3b8c;
+      background: #f3eaff;
+      padding: 0.4rem 1.5rem;
+      border-radius: 3rem;
+      border: 1px solid #e1cfff;
+      transition: all 0.25s ease;
+      margin-top: 0.3rem;
+      letter-spacing: 0.02em;
+      display: inline-block;
+      text-align: center;
+      max-width: 100%;
+      word-break: break-word;
+    }
+
+    .card:hover .author {
+      background: #ffe154;
+      border-color: #823ae0;
+      color: #3d2560;
+      font-weight: 600;
+    }
+
+    /* нижняя подпись */
+    .footer-note {
+      margin-top: 0.8rem;
+      color: #9b7ec4;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-align: center;
+      border-top: 1px solid #e3d3fc;
+      padding-top: 1.6rem;
+      width: fit-content;
+    }
+
+    /* адаптивность */
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      body {
+        padding: 1.8rem 1rem;
+      }
+      .card {
+        border-radius: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Выпускной</h1>
+
+    <!-- Сетка с карточками (ссылки на проекты) -->
+    <div class="projects-grid">
+      
+      <a href="/Проекты/Кирилл - платформер/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🕹️</span>
+        </div>
+        <div class="project-name">Платформер</div>
+        <div class="author">Кирилл Пуртов</div>
+      </a>
+
+      <a href="/Проекты/Кирилл - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🧩</span>
+        </div>
+        <div class="project-name">Головоломка</div>
+        <div class="author">Кирилл Пуртов</div>
+      </a>
+
+      <a href="/Проекты/Леня - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🧩</span>
+        </div>
+        <div class="project-name">Головоломка</div>
+        <div class="author">Лёня Ярошенко</div>
+      </a>
+
+      <a href="/Проекты/Лукьян - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🧩</span>
+        </div>
+        <div class="project-name">Головоломка</div>
+        <div class="author">Лукьян Янковский</div>
+      </a>
+
+      <a href="/Проекты/Стас - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🧩</span>
+        </div>
+        <div class="project-name">Головоломка</div>
+        <div class="author">Стас Позюков</div>
+      </a>
+
+      <a href="/Проекты/Артем - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="image-placeholder">
+          <span>🧩</span>
+        </div>
+        <div class="project-name">Головоломка</div>
+        <div class="author">Артём Сарафанников</div>
+      </a>
+
+    
+
+      
+      
+    </div>
+
+    <div class="footer-note">
+      ⚡ группа геймдизайна • 2026 ⚡
+    </div>
+  </div>
+</body>
+</html>

@@ -100,6 +100,7 @@
     /* место под изображение */
     .image-placeholder {
       width: 100%;
+      overflow: hidden;
       aspect-ratio: 16 / 10;
       background: #f3edff;
       border-radius: 1.5rem;
@@ -128,7 +129,20 @@
       display: block;
     }
 
+     .image {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.2s ease;
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
     .card:hover .image-placeholder span {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    .card:hover .image-placeholder .image {
       transform: scale(1.08);
       opacity: 1;
     }
@@ -208,6 +222,8 @@
         border-radius: 1.8rem;
       }
     }
+
+   
   </style>
 </head>
 <body>
@@ -219,7 +235,7 @@
       
       <a href="./Проекты/Кирилл - платформер/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🕹️</span>
+            <img src="./Обложки/Кирилл - платформер.png" class="image">
         </div>
         <div class="project-name">Платформер</div>
         <div class="author">Кирилл Пуртов</div>
@@ -227,7 +243,7 @@
 
       <a href="./Проекты/Кирилл - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🧩</span>
+         <img src="./Обложки/Кирилл - головоломка.png" class="image">
         </div>
         <div class="project-name">Головоломка</div>
         <div class="author">Кирилл Пуртов</div>
@@ -235,7 +251,7 @@
 
       <a href="./Проекты/Леня - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🧩</span>
+          <img src="./Обложки/Леня - головоломка.PNG" class="image">
         </div>
         <div class="project-name">Головоломка</div>
         <div class="author">Лёня Ярошенко</div>
@@ -243,7 +259,7 @@
 
       <a href="./Проекты/Лукьян - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🧩</span>
+          <img src="./Обложки/Лукьян - головоломка.PNG" class="image">
         </div>
         <div class="project-name">Головоломка</div>
         <div class="author">Лукьян Янковский</div>
@@ -251,7 +267,7 @@
 
       <a href="./Проекты/Стас - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🧩</span>
+          <img src="./Обложки/Стас - головоломка.PNG" class="image">
         </div>
         <div class="project-name">Головоломка</div>
         <div class="author">Стас Позюков</div>
@@ -259,7 +275,7 @@
 
       <a href="./Проекты/Артем - головоломка/index.html" class="card" target="_blank" rel="noopener noreferrer">
         <div class="image-placeholder">
-          <span>🧩</span>
+          <img src="./Обложки/Артем - головоломка.PNG" class="image">
         </div>
         <div class="project-name">Головоломка</div>
         <div class="author">Артём Сарафанников</div>
